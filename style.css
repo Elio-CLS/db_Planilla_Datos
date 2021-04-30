@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono');
+
+body{
+    background: #ddd;
+    font-family: "Roboto Mono";
+}
+
+.container_table{
+    width: 90%;
+    background: white;
+    margin: 50px auto;
+    box-shadow: 0 0 20px #333;
+
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 50px;
+}
+
+.table_title{
+    grid-column-start: 1;
+    grid-column-end: 8;
+    background: teal;
+    color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.table_header, .table_item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table_header{
+    background: cornsilk;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.table_item{
+    padding: 10px;
+    font-size: 14px;
+}

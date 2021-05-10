@@ -18,24 +18,25 @@
             $usuario = trim($_POST['usuario']);
             $pass = trim($_POST['pass']);
             $passConfirm = trim($_POST['passConfirm']);
-
+            
+            // confirma el password y regista en la db
             if($pass==$passConfirm){
                 $pass = sha1($pass);
                 $registro = $obj_conexion->prepare("INSERT INTO tabla1 (nombre,apellido,dni,direccion,usuario,passworld) VALUES('$nombre','$apellido','$dni','$direccion','$usuario','$pass')");
 
                 if($registro->execute()){
-                    $_SESSION['mensaje'] = '<h3>El registro fue exitoso</h3>';
+                    $_SESSION['mensaje'] = '<h3 class="reg_ok">El registro fue exitoso</h3>';
                     header('location: ../singup/singup.php');
                 } else {
-                    $_SESSION['mensaje'] = '<h3>Hay un error, intentelo de nuevo</h3>';
+                    $_SESSION['mensaje'] = '<h3 class="reg_error">Hay un error, intentelo de nuevo</h3>';
                     header('location: ../singup/singup.php');
                 }
             } else {
-                $_SESSION['mensaje'] = '<h3>La contraseña no es igual</h3>';
+                $_SESSION['mensaje'] = '<h3 class="reg_error">La contraseña no es igual</h3>';
                 header('location: ../singup/singup.php');
             }
         } else {
-            $_SESSION['mensaje'] = '<h3>Complete todos los campos</h3>';
+            $_SESSION['mensaje'] = '<h3 class="reg_error">Complete todos los campos</h3>';
             header('location: ../singup/singup.php');
         }
     }
@@ -59,4 +60,5 @@
         header('location:../singup/singup.php');
     }
 */
+
 ?>

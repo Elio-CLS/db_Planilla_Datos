@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/styles_singup.css">
+    <link rel="stylesheet" href="../styles/styles_mensaje.css">
     <title>Registro</title>
 </head>
 
@@ -19,12 +20,7 @@
             </li>
         </ul>
     </nav>
-<?php
-    session_start();
-    if($_SESSION['mensaje']){
-        echo $_SESSION['mensaje'];
-    }
-?>
+
     <div class="contenedor">
         <h2>Registro de usuario</h2>
         <form method="POST" action="../db_php/db_registro.php">
@@ -46,6 +42,15 @@
                 <input type="submit" name="btn_registrar" value="Guardar"></div>
         </form>
     </div>
-    
+
+<?php
+    session_start();
+    if($_SESSION['mensaje']){
+        echo $_SESSION['mensaje'];
+    }
+$_SESSION['mensaje'] = '';
+echo $_SESSION['mensaje'] = '';
+
+?>   
 </body>
 </html>

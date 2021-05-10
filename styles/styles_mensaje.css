@@ -1,0 +1,11 @@
+.reg_ok{
+    background-color: #05c46b;
+    color: whitesmoke;
+    padding: 1%;
+}
+
+.reg_error {
+    background-color: #ff3f34;
+    color: whitesmoke;
+    padding: 1%;
+}

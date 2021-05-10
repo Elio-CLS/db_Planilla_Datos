@@ -43,7 +43,7 @@
             <div class="tabla">
                 <input type="password" name="passConfirm" placeholder="Confirmar constraseña"></div>
             <div class="tabla">
-                <input type="submit" value="Guardar"></div>
+                <input type="submit" name="btn_registrar" value="Guardar"></div>
         </form>
     </div>
     

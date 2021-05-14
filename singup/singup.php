@@ -13,9 +13,6 @@
     <nav class="nav">
         <ul>
             <li>
-                <a href="../perfil/admin.php">Tabla</a>
-            </li>
-            <li>
                 <a href="../login.php">Ingresar</a>
             </li>
         </ul>
@@ -32,6 +29,8 @@
                 <input type="text" name="dni" placeholder="DNI"></div>
             <div class="tabla">
                 <input type="text" name="direccion" placeholder="Dirección"></div>
+            <div class="tabla">
+                <input type="text" name="email" placeholder="E-mail"></div>
             <div class="tabla">
                 <input type="text" name="usuario" placeholder="Usuario"></div>
             <div class="tabla">

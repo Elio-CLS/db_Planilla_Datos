@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/styles_singup.css">
-    <title>Ingresar</title>
+    <link rel="stylesheet" href="styles/styles_mensaje.css">
+    <title>Iniciar sesion</title>
 </head>
 <body>
     <nav class="nav">
@@ -18,14 +19,30 @@
 
     <div class="contenedor">
         <h2>Ingreso de usuario</h2>
-        <form method="POST" action="">
+        <form method="POST" action="db_php/db_login.php">
             <div class="tabla">
-                <input type="text" name="usuario" placeholder="Usuario"></div>
+                <input type="text" name="usuarioLogin" placeholder="Usuario"></div>
             <div class="tabla">
-                <input type="password" name="pass" placeholder="Constraseña"></div>
+                <input type="password" name="passLogin" placeholder="Constraseña"></div>
             <div class="tabla">
-                <input type="submit" value="Entrar"></div>
+                <input type="submit" name="btn_login" value="Ingresar"></div>
         </form>
     </div>
+
+<?php
+    error_reporting(0);
+    // Mensajes
+    session_start();
+
+    if($_SESSION['mensaje']){
+        echo $_SESSION['mensaje'];
+    } else {
+        $_SESSION = array();
+    }
+    $_SESSION['mensaje'] = '';
+    echo $_SESSION['mensaje'] = '';
+    
+?>  
+
 </body>
 </html>

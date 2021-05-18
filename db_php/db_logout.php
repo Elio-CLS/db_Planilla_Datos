@@ -9,7 +9,6 @@ $_SESSION = array();
 session_destroy();
 
 // Redirecciona al login
-//$_SESSION['mensaje'] = '<h3 class="reg_ok">Hasta luego</h3>';
 header('location: ../login.php');
 exit;
 ?>

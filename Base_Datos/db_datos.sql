@@ -19,40 +19,41 @@ USE `db_datos`;
 -- Volcando estructura para tabla db_datos.tabla1
 CREATE TABLE IF NOT EXISTS `tabla1` (
   `ID` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `Fecha` varchar(50) NOT NULL DEFAULT '',
   `Nombre` varchar(50) NOT NULL DEFAULT '0',
   `Apellido` varchar(50) NOT NULL DEFAULT '0',
   `DNI` int(8) NOT NULL DEFAULT '0',
   `Direccion` varchar(50) NOT NULL DEFAULT '0',
+  `Email` varchar(50) NOT NULL DEFAULT '',
   `Usuario` varchar(50) NOT NULL DEFAULT '0',
   `Passworld` varchar(50) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ID`),
+  PRIMARY KEY (`ID`,`Fecha`),
   UNIQUE KEY `DNI` (`DNI`),
   UNIQUE KEY `Usuario` (`Usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla db_datos.tabla1: ~9 rows (aproximadamente)
 /*!40000 ALTER TABLE `tabla1` DISABLE KEYS */;
-INSERT INTO `tabla1` (`ID`, `Nombre`, `Apellido`, `DNI`, `Direccion`, `Usuario`, `Passworld`) VALUES
-	(0000000001, 'Miguel', 'Rodriguez', 32801001, 'San Benito 639', 'miguel584d', '123456789Tw'),
-	(0000000003, 'Cesar', 'Cortaza', 32752265, 'Paraguay 123', 'cesar123', 'sr123456789'),
-	(0000000004, 'Jose', 'Garcia', 42802265, 'Paraguay 503', 'jose123', '123A56789'),
-	(0000000005, 'Manuel', 'Lopez', 25702265, '25 de Julio 503', 'manue123', '12e456789'),
-	(0000000006, 'Maria', 'Gimenez', 34957426, 'Los Altares 678', 'maria45a', '226287361fa1b10b7947671b8bb85ed44b51612e'),
-	(0000000007, 'Maria', 'Lopez', 38946258, 'Venus 587', 'maria123L', '50310fc197ee2bf154733e32115e3995d342b0b2'),
-	(0000000008, 'Miguel', 'Garcia', 25876954, '28 de Julio 1455', 'garcia1234mige', 'c9b0aab4a9da6aac16796b9cdbfeed2128e3f8cd'),
-	(0000000009, 'Jose Maria', 'Benites', 35824967, 'Cholila 1022', 'jose35', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
-	(0000000010, 'Julio', 'Altamirano', 36951753, 'Rawson 587', 'julio36alta', '13f17e36c578b8b6bbbb960715973a0eb26ac5b2'),
-	(0000000011, 'Hector', 'Tornado', 45631558, 'Pelegrini norte 667', 'eltornadito', '4b4b04529d87b5c318702bc1d7689f70b15ef4fc');
+INSERT INTO `tabla1` (`ID`, `Fecha`, `Nombre`, `Apellido`, `DNI`, `Direccion`, `Email`, `Usuario`, `Passworld`) VALUES
+	(0000000001, '2021-05-21', 'Admin', 'Admin', 11222333, 'Admin', 'admin@admin.com', 'admin', 'f865b53623b121fd34ee5426c792e5c33af8c227'),
+	(0000000002, '2013-05-21', 'Mauro Jose', 'Villarino', 17568951, 'Paraguay 584', 'maurojose@gmail.com', 'mauro123', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
+	(0000000003, '2013-05-21', 'Damian', 'Hecherria', 22852456, 'Paraguay 584', 'damian@gmail.com', 'dami123', 'ef5434f78334942aff6d44c9c401d04b1becd807'),
+	(0000000004, '13/05/21', 'Cristian', 'Hecherria', 29527486, 'Paraguay 584', 'cristian123@gmail.com', 'cris123', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
+	(0000000005, '13/05/21', 'Maria', 'Lopez', 25897564, '28 de Julio 1455', 'maria123@gmail.com', 'root', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
+	(0000000007, '13/05/21', 'pepe', 'asdfas', 54651654, 'dd', 'damian@gmail.com', 'dfsdfs', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220'),
+	(0000000008, '13/05/21', 'Elio', 'Lucero', 33852456, 'San martin 123', 'elio32e@gmail.com', 'elio32e', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
+	(0000000009, '18/05/2021', 'Fabio', 'Cortaza', 55648951, 'Buenos Aires 554', 'cortacita@gmail.com', 'corta123', '7c4a8d09ca3762af61e59520943dc26494f8941b'),
+	(0000000010, '18/05/2021', 'Rita', 'Miguel', 42550687, 'Juilio A Roca 145', 'rita_del_barrio@hotmail.com', 'rita55', '601f1889667efaebb33b8c12572835da3f027f78');
 /*!40000 ALTER TABLE `tabla1` ENABLE KEYS */;
 
 -- Volcando estructura para tabla db_datos.tabla2
 CREATE TABLE IF NOT EXISTS `tabla2` (
   `ID` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
-  `Fecha` date NOT NULL,
+  `Fecha` varchar(50) NOT NULL DEFAULT '',
   `DirN` varchar(50) NOT NULL DEFAULT '0',
   `DirV` varchar(50) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID`),
-  CONSTRAINT `FK_tabla2_tabla1` FOREIGN KEY (`ID`) REFERENCES `tabla1` (`ID`)
+  CONSTRAINT `ID` FOREIGN KEY (`ID`) REFERENCES `tabla1` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla db_datos.tabla2: ~0 rows (aproximadamente)

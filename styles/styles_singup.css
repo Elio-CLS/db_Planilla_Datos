@@ -10,8 +10,8 @@ body{
 #btn_new_pass{
     text-decoration: none;
     color: #1e272e;
+    font-size: 12px;
 }
-
 
 .nav {
     text-align: right;
@@ -31,6 +31,12 @@ body{
     color: whitesmoke;
 }
 
+.contenedor {
+    background: whitesmoke;
+    padding: 1%;
+    border-radius: 10px;
+}
+
 .contenedor form {
     display: block;
     margin: 2%;
@@ -43,5 +49,10 @@ body{
 .tabla input {
     width: 20%;
     padding: 1%
+}
+
+input[type="submit"]{
+ cursor: pointer;
+ margin: 1%;
 }
 

@@ -31,7 +31,6 @@ session_start();
     </nav>
 
 <?php
-    //session_start();
     if($_SESSION['mensaje']){
         echo $_SESSION['mensaje'];
     }

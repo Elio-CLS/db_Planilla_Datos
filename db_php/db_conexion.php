@@ -12,10 +12,4 @@ try{
     echo 'Server Off' . $e->getMessage();
 }
 
-/*
-// Realiza la consulta a la db
-$consulta = $obj_conexion->prepare('select ID, Nombre, Apellido, DNI, Direccion, Usuario, Passworld from tabla1');
-$consulta->execute();
-*/
-
 ?>

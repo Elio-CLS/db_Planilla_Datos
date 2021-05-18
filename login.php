@@ -27,6 +27,8 @@
             <div class="tabla">
                 <input type="submit" name="btn_login" value="Ingresar"></div>
         </form>
+
+        <a id="btn_new_pass" href="perfil/reset_pass.php"><h5>Cambie su contraseña</h5></a>
     </div>
 
 <?php
@@ -41,7 +43,6 @@
     }
     $_SESSION['mensaje'] = '';
     echo $_SESSION['mensaje'] = '';
-    
 ?>  
 
 </body>

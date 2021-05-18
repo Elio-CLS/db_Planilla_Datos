@@ -7,6 +7,12 @@ body{
     margin: 0%;
 }
 
+#btn_new_pass{
+    text-decoration: none;
+    color: #1e272e;
+}
+
+
 .nav {
     text-align: right;
     background: #1e272e;
@@ -38,3 +44,4 @@ body{
     width: 20%;
     padding: 1%
 }
+

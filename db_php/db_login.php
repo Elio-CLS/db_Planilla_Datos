@@ -2,10 +2,11 @@
 // Inicializa la session
 session_start();
 
-// Comprueba que el usuario no este ya logeado
-if(isset($_SESSION['login']) && $_SESSION['login'] === true){
+// Comprueba si el usuario o admin estan logeado
+if(isset($_SESSION['usuario']) && $_SESSION['usuario'] !== 'admin' && $_SESSION['login'] == true){
+    header('location: ../perfil/usuario.php');
+} else {
     header('location: ../perfil/admin.php');
-    exit;
 }
 
 // Se incluye el archivo conexion
@@ -103,10 +104,6 @@ if(isset($_POST['btn_login'])){
                             // Mensaje de error si la contraseña no es correcta
                             $login_error = "Error: La contraseña no es correcta";
                             $_SESSION['mensaje'] = '<h3 class="reg_error">'.$login_error.'</h3>';
-                            //echo $id . '<br>';
-                            //echo $usuarioLogin . '<br>';
-                            //echo $pass_db . '<br>';
-                            //echo $passLogin . '<br>';
                             header('location: ../login.php');
                         }
                     }

@@ -6,10 +6,9 @@
         if(strlen($_POST['nombre']) >= 3 &&
             strlen($_POST['apellido']) >= 3 &&
             !empty($_POST['dni']) &&
-            !is_nan($_POST['dni']) &&
+            is_numeric($_POST['dni']) &&
             !empty($_POST['direccion']) &&
             !empty($_POST['email']) &&
-            //!empty($_POST['usuario']) &&
             !empty($_POST['pass']) &&
             !empty($_POST['passConfirm'])) {
             
@@ -21,7 +20,7 @@
             $email = trim($_POST['email']);
             
             // Comprobacion de usuario
-            if(!empty($_POST['usuario']) && strlen($_POST['usuario']) >= 4){
+            if(!empty($_POST['usuario']) && strlen($_POST['usuario']) >= 3){
                 $usuario = trim($_POST['usuario']);
             
                 $pass = trim($_POST['pass']);

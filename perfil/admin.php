@@ -55,7 +55,7 @@ session_start();
         <div class="table_header">Dirección</div>
         <div class="table_header">E-mail</div>
         <div class="table_header">Usuario</div>
-        <div class="table_header">Contraseña</div>
+        <div class="table_header">Acciones</div>
 
         <?php foreach($consulta as $item){ ?>
         <div class="table_item"><?php echo $item['ID']; ?></div>
@@ -66,7 +66,11 @@ session_start();
         <div class="table_item"><?php echo $item['Direccion']; ?></div>
         <div class="table_item"><?php echo $item['Email']; ?></div>
         <div class="table_item"><?php echo $item['Usuario']; ?></div>
-        <div class="table_item"><?php echo $item['Passworld']; ?></div>
+        <div class="table_item">
+            <a href="usuario_edit.php?id=<?php echo $item['ID'];?>">Editar</a>
+            <p> / </p>
+            <a href="../db_php/db_delete.php?id=<?php echo $item['ID'];?>">Borrar</a>
+        </div>
         <?php } ?>
     </div>
 

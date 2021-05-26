@@ -1,6 +1,6 @@
 <?php 
 session_start();
-// Comprueba que el usuario no este ya logeado
+// Comprueba si el usuario esta logeado e inpide acceso aca
     if(empty($_SESSION['usuario']) && $_SESSION['usuario'] !== true){
         header('location: ../login.php');
         $_SESSION['mensaje'] = '<h3 class="reg_error">Error: Inicie sesion para acceder</h3>';
@@ -47,6 +47,7 @@ session_start();
         <div class="table_header">DNI</div>
         <div class="table_header">Dirección</div>
         <div class="table_header">E-mail</div>
+        <div class="table_header">Acciones</div>
         
         <div class="table_item"><?php echo $_SESSION['fecha_reg']; ?></div>
         <div class="table_item"><?php echo $_SESSION['nombre']; ?></div>
@@ -54,6 +55,11 @@ session_start();
         <div class="table_item"><?php echo $_SESSION['dni']; ?></div>
         <div class="table_item"><?php echo $_SESSION['direccion']; ?></div>
         <div class="table_item"><?php echo $_SESSION['email']; ?></div>
+        <div class="table_item">
+            <a href="usuario_edit.php?id=<?php echo $_SESSION['id'];?>">Editar</a>
+            <p> / </p>
+            <a href="../db_php/db_delete.php?id=<?php echo $_SESSION['id'];?>">Borrar</a>
+        </div>
                 
     </div>
 

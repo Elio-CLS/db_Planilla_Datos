@@ -1,3 +1,14 @@
+<?php 
+/*
+session_start();
+if(!empty($_SESSION['usuario']) && $_SESSION['usuario'] !== 'admin' && $_SESSION['login'] == true){
+    header('location: perfil/usuario.php');
+} else {
+    header('location: perfil/admin.php');
+}
+*/
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

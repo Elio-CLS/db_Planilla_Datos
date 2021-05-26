@@ -32,13 +32,13 @@ body{
     box-shadow: 0 0 20px #333;
 
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     grid-auto-rows: 50px;
 }
 
 .table_title{
     grid-column-start: 1;
-    grid-column-end: 7;
+    grid-column-end: 8;
     background: teal;
     color: whitesmoke;
     display: flex;

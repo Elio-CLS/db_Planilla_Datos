@@ -29,6 +29,7 @@
                 // confirma el password y regista en la db
                 if($pass==$passConfirm){
                     $pass = sha1($pass);
+                    
                     $registro = $obj_conexion->prepare("INSERT INTO tabla1 (fecha,nombre,apellido,dni,direccion,email,usuario,passworld) VALUES('$fecha_reg','$nombre','$apellido','$dni','$direccion','$email','$usuario','$pass')");
 
                         if($registro->execute()){

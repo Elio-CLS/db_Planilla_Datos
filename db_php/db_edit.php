@@ -15,8 +15,8 @@ if(empty($_SESSION['usuario']) && $_SESSION['usuario'] !== true){
 if(isset($_POST['btn_update'])){
 
         // ID
-        $id = $_GET['id'];
-
+        $id = $_POST['idUser'];
+      
         // NOMBRE
         if(empty($_POST['nombre_up']) || strlen($_POST['nombre_up']) < 2){
             $_SESSION['mensaje'] = '<h3 class="reg_error">Error: El nombre es muy corto o esta vacio.</h3>';
@@ -33,8 +33,9 @@ if(isset($_POST['btn_update'])){
             $apellido_up = trim($_POST['apellido_up']);
         }
 
-        // DNI
-        if(empty($_POST['dni_up']) || is_nan($_POST['dni_up']) || !is_numeric($_POST['dni_up'])){
+        // DNI is_nan($_POST['dni_up']) ||
+        if(!is_numeric($_POST['dni_up']) || strlen($_POST['dni_up']) < 7){
+            
             $_SESSION['mensaje'] = '<h3 class="reg_error">Error: El DNI no es un numero o es muy corto.</h3>';
             header('location: ../perfil/usuario_edit.php');
         } else {
@@ -66,6 +67,32 @@ if(isset($_POST['btn_update'])){
 
             // PREPARAR CONSULTA REGISTRAR
             $sql_update = "UPDATE tabla1 SET nombre = :nombre_up, apellido = :apellido_up, dni = :dni_up, direccion = :direccion_up, email = :email_up WHERE id = :id";
+
+            // PREPARAR CONSULTA TABLA2
+
+            $fecha_new = date('d/m/Y');
+          
+            // TRAER DATOS DE DIRECCION VIEJA
+            $sql_dirV = "SELECT Direccion FROM tabla1 where ID=:id";
+            
+            $stmt_dirV = $obj_conexion->prepare($sql_dirV);
+            $stmt_dirV->bindParam(':id',$id);   
+           
+            
+            $stmt_dirV->execute();
+            $row_dirV = $stmt_dirV->fetch();
+            
+            $dirV = $row_dirV['Direccion'];
+            
+            
+            // PREPARA CONSULTA TABLA2
+            $sql_dirN = "INSERT INTO tabla2 (Id_usuario, Fecha, DirN, DirV) VALUES ('$id','$fecha_new','$direccion_up','$dirV')";
+            // EJECUTAR 
+            $stmt_dirN = $obj_conexion->prepare($sql_dirN);
+            $stmt_dirN->execute();
+            //unset($obj_conexion);
+            //$obj_conexion->close();
+     
 
             if($stmt_update = $obj_conexion->prepare($sql_update)){
                 $stmt_update->bindParam(':id', $id, PDO::PARAM_INT);

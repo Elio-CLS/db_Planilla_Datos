@@ -59,6 +59,8 @@ session_start();
             <a href="usuario_edit.php?id=<?php echo $_SESSION['id'];?>">Editar</a>
             <p> / </p>
             <a href="../db_php/db_delete.php?id=<?php echo $_SESSION['id'];?>">Borrar</a>
+            <p> / </p>
+            <a href="direcciones.php?id=<?php echo $_SESSION['id'];?>">Ver</a>
         </div>
                 
     </div>

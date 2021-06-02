@@ -4,6 +4,8 @@ include('db_conexion.php');
 error_reporting(0);
 session_start();
 
+
+
 // Comprueba que el usuario este logeado
 if(empty($_SESSION['usuario']) && $_SESSION['usuario'] !== true){
     header('location: ../login.php');
@@ -11,11 +13,13 @@ if(empty($_SESSION['usuario']) && $_SESSION['usuario'] !== true){
     exit;
 }
 
+
+
 // VERIFICAMOS ID
 if(isset($_POST['btn_update'])){
 
         // ID
-        $id = $_GET['id'];
+        $id = $_POST['idUser'];
 
         // NOMBRE
         if(empty($_POST['nombre_up']) || strlen($_POST['nombre_up']) < 2){
@@ -34,7 +38,7 @@ if(isset($_POST['btn_update'])){
         }
 
         // DNI
-        if(empty($_POST['dni_up']) || is_nan($_POST['dni_up']) || !is_numeric($_POST['dni_up'])){
+        if(!is_numeric($_POST['dni_up']) || strlen($_POST['dni_up']) < 7){
             $_SESSION['mensaje'] = '<h3 class="reg_error">Error: El DNI no es un numero o es muy corto.</h3>';
             header('location: ../perfil/usuario_edit.php');
         } else {
@@ -57,12 +61,38 @@ if(isset($_POST['btn_update'])){
             $email_up = trim($_POST['email_up']);
         }
 
+
+
         // ACTUALIZANDO LOS DATOS
         if(isset($nombre_up) &&
         isset($apellido_up) &&
         isset($dni_up) &&
         isset($direccion_up) &&
         isset($email_up)){
+
+
+
+            // TRAER DIRECCION (vieja) TABLA1
+            $sql_dirVieja = "SELECT Direccion FROM tabla1 WHERE ID=:id";
+            $stmt_dirVieja = $obj_conexion->prepare($sql_dirVieja);
+            $stmt_dirVieja->bindParam(':id', $id, PDO::PARAM_INT);
+
+            $stmt_dirVieja->execute();
+            $row_dirVieja = $stmt_dirVieja->fetch();
+            $dirVieja = $row_dirVieja['Direccion'];
+
+
+
+
+            // PREPARAR CONSULTA TABLA2
+            $fecha_new = date('d/m/Y');
+            $sql_dirNueva = "INSERT INTO tabla2 (Id_usuario, Fecha, DirN, DirV) VALUES ('$id', '$fecha_new', '$direccion_up', '$dirVieja')";
+            
+            $stmt_dirNueva = $obj_conexion->prepare($sql_dirNueva);
+            $stmt_dirNueva->execute();
+
+
+
 
             // PREPARAR CONSULTA REGISTRAR
             $sql_update = "UPDATE tabla1 SET nombre = :nombre_up, apellido = :apellido_up, dni = :dni_up, direccion = :direccion_up, email = :email_up WHERE id = :id";

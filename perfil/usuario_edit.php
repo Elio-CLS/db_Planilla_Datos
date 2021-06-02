@@ -64,7 +64,11 @@ if(isset($_GET['id'])){
 
     <div class="contenedor">
         <h2>Actualizar datos del usuario</h2>
-        <form method="POST" action="../db_php/db_edit.php?id=<?php echo $id; ?>">
+        <form method="POST" action="../db_php/db_edit.php">
+        
+            <!-- Enviamos el id que recibimos por GET desde usuario.php hacia db_edit.php por POST en un input hidden -->
+            <input type="hidden" name="idUser" value="<?php echo $_GET['id'];?>"> 
+
             <div class="tabla">
                 <input type="text" name="nombre_up" placeholder="Editar Nombre" value="<?php echo $nombre_db;?>"></div>
             <div class="tabla">
